@@ -31,8 +31,9 @@ class _DicePageState extends State<DicePage> {
   //variables for dice
   int leftNum = 1;
   int rightNum = 1;
+  Image image1 = new Image.asset('images/dice1.png');
+  Image image2 = new Image.asset('images/dice2.png');
 
-  @override
   Widget build(BuildContext context) {
     return Center(
       child: Row(
@@ -41,12 +42,11 @@ class _DicePageState extends State<DicePage> {
             //flex: 1,
             //LEFT BUTTON
             child: FlatButton(
-              onPressed: () {
-                setState(() {
-                  leftNum = randomNumber();
-                });
-              },
               child: Image.asset('images/dice$leftNum.png'),
+              onPressed: () {
+                rollDiceLeft();
+                //leftNum = randomNumber();
+              },
             ),
           ),
           Expanded(
@@ -55,7 +55,8 @@ class _DicePageState extends State<DicePage> {
             child: FlatButton(
               onPressed: () {
                 setState(() {
-                  rightNum = randomNumber();
+                  rollDiceRight();
+                  //rightNum = randomNumber();
                 });
               },
               child: Image.asset('images/dice$rightNum.png'),
@@ -68,8 +69,26 @@ class _DicePageState extends State<DicePage> {
 
   //roll Dice Animation
   void rollDiceLeft() {
-    for (int i = 0; i < 10; i++) {
-      leftNum = randomNumber();
+    for (int i = 0; i < 5; i++) {
+      setState(() {
+        leftNum = randomNumber();
+//        image1 = Image.asset('images/dice$leftNum.png');
+//        print(image1);
+      });
+      sleep(const Duration(seconds: 1));
+    }
+  }
+
+  Image setImage1() {
+    return image1;
+  }
+
+  void rollDiceRight() {
+    for (int i = 0; i < 5; i++) {
+      rightNum = randomNumber();
+      setState(() {
+        image2 = Image.asset('images/dice$rightNum.png');
+      });
       sleep(const Duration(seconds: 1));
     }
   }
