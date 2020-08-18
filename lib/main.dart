@@ -7,7 +7,7 @@ void main() {
   return runApp(
     MaterialApp(
       //to hide debug banner set to false
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Color(0xff455A64),
         appBar: AppBar(
